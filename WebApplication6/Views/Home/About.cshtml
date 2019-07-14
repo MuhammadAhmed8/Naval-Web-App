@@ -1,0 +1,183 @@
+﻿@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Head{
+    <link rel="stylesheet" type="text/css" href="/css/myfile.css" />
+
+
+
+
+ <style>
+     .parallax {
+         /* The image used */
+         background-image: url(images/about.jpg);
+         /* Set a specific height */
+         min-height: 360px;
+         height: 400px;
+         /* Create the parallax scrolling effect */
+         background-size: cover;
+         background-attachment: fixed;
+         background-position: top 80% right 80%;
+         background-repeat: no-repeat;
+     }
+
+@@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+.welcome{
+    text-align: center;
+	font-size:28px;
+	font-family: source sans pro;
+	font-weight:600;
+    padding: 0 !important;
+}
+.container{
+    text-align: center;
+    padding: 3rem;
+}
+.container p{
+	font-size:14px;
+	font-family:maven pro !important;
+	padding: 0 20px;
+    color: #333 !important;
+    
+
+}
+
+.services{
+	background-color:#4caf50;
+	color:#fff;
+}
+.h2{
+	text-align:center;
+	font-size:32px;
+	color:#fff;
+	font-family:poppins;
+	text-transform:uppercase;
+	padding:20px 0px;
+	display: flex;
+	align-items: center;
+}
+.h2::before, .h2::after{
+	content:"";
+	flex: 1;
+	display:block;
+	border-bottom:3px solid #fff;
+	margin:0px 20px;
+	border-radius:2px;
+}
+
+.services-content h4{
+	font-size:26px;
+	text-transform:uppercase;
+	font-family:poppins;
+	padding:5px;
+	text-align:center;
+	margin:10px 0px;
+	letter-spacing:1.2px;
+}
+.services-content p{
+	font-size:15px;
+	padding:0px;
+	font-family: roboto;
+}
+.author img{
+	width:300px;
+	height:300px;
+	border-radius:50%;
+}
+.author h4{
+	font-family:montserrat;
+	color:#2bc22a;
+}
+.author h6{
+	color:#727272;
+	text-transform:uppercase;
+	font-size:20px;
+	font-family:poppins;
+}
+blockquote{
+	width:34%;
+}
+    </style>
+}
+
+
+<!-- About -->
+
+<div class="parallax"></div>
+
+<!-- Content -->
+<div class="container">
+   
+    <h5 class="welcome">Welcome to Naval!</h5>
+
+    <p>We aim to offer our customers a variety of the latest [PRODUCTS CATEGORY NAME]. We’ve come a long way, so we know exactly which direction to take when supplying you with high quality yet budget-friendly products. We offer all of this while providing excellent customer service and friendly support.
+    <br />
+    We always keep an eye on the latest trends in [PRODUCTS CATEGORY NAME] and put our customers’ wishes first. That is why we have satisfied customers all over the world, and are thrilled to be a part of the [PRODUCTS CATEGORY NAME] industry.
+    <p>
+        The interests of our customers are always top priority for us, so we hope you will enjoy our products as much as we enjoy making them available to you.
+    </p>
+</div>
+
+<div class="services">
+    <h2 align="center" class="h2">Our Services</h2>
+
+    <center>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="services-content">
+                        <span class="fa fa-car fa-8x"></span>
+                        <h4>Free Shipping</h4>
+                        <p>The interests of our customers are always top priority for us, so we hope you will enjoy our products as much as we enjoy making them available to you.			</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="services-content">
+                        <span class="fa fa-money-bill fa-8x"></span>
+                        <h4>On-Cash Delivery</h4>
+                        <p>The interests of our customers are always top priority for us, so we hope you will enjoy our products as much as we enjoy making them available to you.			</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="services-content">
+                        <span class="fa fa-clock fa-8x"></span>
+                        <h4>24/7 Available</h4>
+                        <p>The interests of our customers are always top priority for us, so we hope you will enjoy our products as much as we enjoy making them available to you.			</p>
+                    </div>
+                </div>
+
+            </div>
+            <br /><br />
+        </div>
+    </center>
+</div>
+
+<!-- Author -->
+<div style="padding: 3rem">
+    <h2 class="heading2" style="margin-bottom:3rem">About Team </h2>
+    <div align="center" class="author">
+        <img src="/images/ukkasha.jpg" />
+        <br /><br />
+        <h4>Muhammad Ukkasha</h4>
+        
+    </div>
+</div>
+
+<div class="parallax"></div>
+<!-- Footer -->
+
+<div align="center" class="footer">
+    <p>COPYRIGHTS <i class="far fa-copyright"></i> 2019 <b><a href="#"> Naval</a></b> All Rights Reserved.</p>
+    <p>Website Designed By <b>Fan Dev.</b></p>
+</div>
+<script src="js/script.js" type="text/javascript"></script>

@@ -1,0 +1,112 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.cart-section {
+    padding: 2rem 0;
+    background: #f1f1f1;
+    display:block
+}
+
+.cart-cover {
+    background: url("/images/fish.jpg") center no-repeat;
+    background-size: cover;
+    filter: grayscale(0.7);
+    width: 100vw;
+    height: 23vh;
+    position: relative;
+    margin:0
+}
+
+.cart-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2.5rem;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    padding: 0.5rem 1.5rem;
+    text-shadow: 2px 1px black;
+}
+p {
+    margin: 0
+}
+.cart-items {
+    margin: 0 0 2rem 0;
+    padding: 2rem 0;
+    display:block;
+}
+
+.cart-details {
+    text-align: center;
+    font-family: 'Muli', sans-serif;
+}
+
+.cart-details::after {
+        content: " !";
+        font-weight: bold;
+  }
+
+
+
+.cart-item-remove {
+    position: absolute;
+    top: 10px;
+    right: 1rem;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    
+   
+}
+
+
+
+.cart-item-title {
+    text-align: center;
+    font-family: 'Righteous', cursive;
+    font-size: 1.3rem;
+    color: #282b2e
+}
+
+.cart-item-row {
+    position: relative;
+    padding: 5px;
+    border-bottom: 0px solid grey;
+    font-family: 'Muli', sans-serif;
+    
+}
+.bill {
+    max-width: 500px;
+    padding: 2rem 3rem;
+    font-family: 'Muli', sans-serif;
+}
+
+@media (min-width:700px){
+    .cart-cover {
+        height: 28vh
+    }
+    .cart-title{
+        font-size: 3rem
+    }
+}
+
+@media (min-width:900px) {
+    .cart-cover {
+        height: 32vh
+    }
+
+    .cart-title {
+        font-size: 4rem
+    }
+}

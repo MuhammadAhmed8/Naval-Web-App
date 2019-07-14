@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+@section Head{
+
+    <link href="~/css/product.css" rel="stylesheet" />
+
+}
+
+@section Cover{
+    
+    <div id="wowslider-container0" >
+        <div class="ws_images">
+            <ul>
+                <li><img src="/data0/images/chicken.jpg" alt="Chicken" title="Chicken" id="wows0_0" />stuffed chicken</li>
+                <li><a href="#"><img src="/data0/images/egg.jpg" alt="html5 slideshow" title="Egg" id="wows0_1" /></a>Desi Egg</li>
+                <li><img src="/data0/images/fish.jpg" alt="Fish" title="Fish" id="wows0_2" />Prawn Fish, Grilled Fish</li>
+            </ul>
+        </div>
+        <div class="ws_bullets">
+            <div>
+                <a href="#" title="Chicken"><span><img src="/data0/tooltips/chicken.jpg" alt="Chicken" />1</span></a>
+                <a href="#" title="Egg"><span><img src="/data0/tooltips/egg.jpg" alt="Egg" />2</span></a>
+                <a href="#" title="Fish"><span><img src="/data0/tooltips/fish.jpg" alt="Fish" />3</span></a>
+            </div>
+        </div>
+    </div>
+}
+<br /><br />
+      <div>
+          <h2 id="products" class="heading2 color"><span> Products </span></h2>
+          <ul align="center" class="pro-menu">
+              @foreach (var c in ViewBag.Categories)
+              {
+
+                  if ((string)ViewData["current_cat"] == c.Name)
+                  {
+                      <li class="active"><a href="/product/@c.Name">@c.Name</a></li>
+                  }
+                  else
+                  {
+                      <li><a href="/product/@c.Name">@c.Name</a></li>
+                  }
+
+
+
+              }
+          </ul>
+
+          @if (Model.Count() == 0)
+          {
+              <br />
+              <center>
+                  <p class="text-muted">No items yet!</p>
+              </center>
+          }
+          else
+          {
+              <section>
+                  @foreach (var p in Model)
+                  {
+
+                  <div class="grid">
+                      <figure class="effect-zoe">
+                          <img class="image_pro" src="~/images/@p.Image" />
+                          <figcaption>
+                              <h2>Rs<span> @p.Price</span></h2>
+                              <p class="icon-links">
+                                  <form method="post">
+                                      <input type="hidden" value="@p.Id" name="productId" />
+                                      <input type="hidden" value="@ViewContext.HttpContext.Request.PathAndQuery()" name="returnUrl" />
+                                      <button type="submit"><i class="fas fa-cart-plus fa-2x"></i></button>
+                                  </form>
+                              </p>
+                              <p class="description"><span> @p.Name</span></p>
+                          </figcaption>
+                      </figure>
+
+                  </div>
+
+                  }
+              </section>
+
+              /*<div style="display:block">
+                  @for (int i = 1; i <= (int)ViewData["ItemCount"] / (int)ViewData["PageSize"]; i++)
+                  {
+
+                      <a class="btn btn-outline-primary" href="?page=@(i+1)">@(i + 1)</a>
+
+                  }
+              </div>*/
+          }
+
+          <script>
+              $(document).ready(function () {
+                  $('form').submit(function (e) {
+                      e.preventDefault();
+
+                      $.ajax({
+                          url: "/api/cart",
+                          contentType: "application/json",
+                          method: "POST",
+                          data: JSON.stringify({
+                              Id: this.elements["productId"].value,
+                              Quantity: -1
+                          }),
+
+                          success: function (res) {
+                              console.log('successfuly', res)
+                              document.getElementById("carttotal").innerText = "PKR " + res[0] + ".00";
+                              document.getElementById("cartvalue").innerText = res[1];
+
+                          },
+                          error: function (err) {
+                              console.log("error")
+                          }
+
+                      })
+                  })
+              })
+          </script>
+
+

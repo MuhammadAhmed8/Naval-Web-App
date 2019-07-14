@@ -1,0 +1,404 @@
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Naval</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
+    </environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
+        </script>
+    </environment>
+    <!-- Hover Effect -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- fONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300,500,600,700,800,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:300,500,700&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya Sans SC' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/engine0/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/set1.css" />
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+    <link rel="stylesheet" href="~/css/common.css" />
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    @RenderSection("Head", required: false)
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: #fafafa;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .main-header {
+            width: 100%;
+            padding: 5px 25px;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 200;
+            -webkit-box-shadow: 0 8px 6px -6px #999;
+            -moz-box-shadow: 0 8px 6px -6px #999;
+            box-shadow: 0 8px 6px -6px #999;
+        }
+
+            .main-header > div {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 auto;
+            }
+
+        .nav-brand {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-left: 5px;
+            font-family: Montserrat;
+            color: black;
+        }
+
+        .toggle-menu-button {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 1.6rem;
+            margin-right: 10px;
+        }
+
+        .main-nav {
+            display: inline-block;
+            text-align: right;
+            vertical-align: middle;
+            width: calc(100% - 130px);
+            margin: 0 auto;
+            position: relative
+        }
+
+        .main-nav__labels {
+            display: none;
+            height: 100%;
+        }
+
+        .main-nav__items {
+            margin: 0;
+        }
+
+        .main-nav__item {
+            display: inline-block;
+            margin: 0px 16px;
+            font-size: 1.3rem;
+        }
+
+            .main-nav__item a {
+                display: inline-block;
+                font-family: Montserrat;
+                color: black;
+            }
+
+            .main-nav__item :hover,
+            .main-nav__item :active {
+                color: forestgreen;
+            }
+
+
+        /* Mobile Nav starts*/
+
+        .mobile-nav {
+            height: 100vh;
+            position: fixed;
+            width: 80vw;
+            max-width: 630px;
+            background: white;
+            top: 50px;
+            left: 0;
+            z-index: 200;
+            padding: 2rem 1rem;
+            display: none;
+        }
+
+       
+        .mobile-nav__item {
+            list-style: none;
+            margin: 1rem 0;
+            
+        }
+        .mobile-nav__item span{
+            margin-right:1rem;
+        }
+        .mobile-nav__item:hover,
+        .mobile-nav__item:active {
+            border-bottom: 1px solid;
+        }
+
+        .drop-shadow {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background: grey;
+            filter: opacity(0.7);
+            display: none;
+            z-index: 120
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        button:focus {
+            outline: none;
+        }
+
+
+        .active {
+            background: green;
+            color: white
+        }
+
+
+        @@media (max-width:330px) {
+            .main-header {
+                padding: 2px;
+            }
+
+            p {
+                font-size: 0.5rem
+            }
+        }
+
+        @@media (min-width: 750px) {
+            .main-header {
+                padding: 8px 25px;
+            }
+            .main-nav {
+                width: calc(100% - 98px);
+            }
+
+            .nav-brand {
+                margin-left: 0;
+            }
+
+            .main-nav__labels {
+                display: inline;
+            }
+
+            .toggle-menu-button {
+                display: none;
+            }
+        }
+
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .number {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #2cbc2a;
+            position: absolute;
+            font-family: source sans pro;
+            font-size: 10px;
+            line-height: 14px;
+            right: 0;
+            top: -8px;
+            text-align:center;
+        }
+
+        ul {
+            margin: 0
+        }
+        a{
+            color: black
+        }
+        .active {
+            background-color: #2bc22a;
+            border-radius: 30px;
+            transition: 0.5s ease;
+        }
+
+        .active a {
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="drop-shadow"></div>
+
+    @RenderSection("Cover", required: false)
+
+    <header class="main-header">
+        <div>
+            <span class="toggle-menu-button">
+                <i class="fa fa-bars "></i>
+            </span>
+
+            <a href="#" class="nav-brand">
+                Naval
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul class="main_nav__items">
+                <span class="main-nav__labels">
+                    <li class="main-nav__item ">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="main-nav__item ">
+                        <a href="/#products">Products</a>
+                    </li>
+                    <li class="main-nav__item ">
+                        <a href="/contact">Contact</a>
+                    </li>
+                    <li class="main-nav__item ">
+                        <a href="/about">About</a>
+                    </li>
+                </span>
+                <li class="main-nav__item" style="margin-right: 0">
+                    <a href="/cart">
+                        <span class="fas fa-shopping-cart cart-icon" style="vertical-align: middle">
+                            @if (Context.Session.GetString("cartquantity") == null)
+                            {
+                                <span id="cartvalue" class="number">0</span>
+                            }
+                            else
+                            {
+                                <span id="cartvalue" class="number">@Context.Session.GetString("cartquantity") </span>
+
+                            }
+                        </span>
+                        <div style="display: inline-block;vertical-align: middle;font-family:'Maven pro';font-size: 0.7rem;text-align: left">
+                            <p style="margin:0;font-family:Maven Pro">cart</p>
+                            @if (Context.Session.GetString("cartquantity") == null)
+                            {
+                                <p id="carttotal" style="margin:0;">PKR 0.00</p>
+                            }
+                            else
+                            {
+                                <p id="carttotal" style="margin:0;">PKR @Context.Session.GetString("total")</p>
+
+                            }
+                        </div>
+                    </a>
+                </li>
+
+
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__items">
+            <li class="mobile-nav__item ">
+                <a href="/">
+                <span class="fa fa-home"></span>Home</a>
+            </li>
+            <li class="mobile-nav__item ">
+                <a href="/#products">
+                 <span class="fa fa-shopping-bag"></span>Products</a>
+            </li>
+            <li class="mobile-nav__item ">
+                <a href="/contact">
+                <span class="fa fa-phone"></span>Contact
+                </a>
+            </li>
+            <li class="mobile-nav__item ">
+                <a href="/about">
+                <span class="fas fa-address-book"></span>About</a>
+            </li>
+
+        </ul>
+
+
+    </nav>
+
+
+    <script type="text/javascript" src="/engine0/wowslider.js"></script>
+    <script type="text/javascript" src="/engine0/script.js"></script>
+
+    <!-- End WOWSlider.com BODY section -->
+
+    <main>
+        <partial name="_CookieConsentPartial" />
+        @RenderBody()
+
+
+    </main>
+
+
+
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+<script>
+    let toggle_button = document.querySelector(".toggle-menu-button");
+    let mobile_navbar = document.querySelector(".mobile-nav");
+    let drop_shadow = document.querySelector(".drop-shadow");
+    toggle_button.addEventListener("click", function () {
+        mobile_navbar.classList.toggle("show");
+        drop_shadow.classList.toggle("show");
+
+
+    })
+    drop_shadow.addEventListener("click", function () {
+        mobile_navbar.classList.toggle("show");
+        drop_shadow.classList.toggle("show");
+    })
+</script>

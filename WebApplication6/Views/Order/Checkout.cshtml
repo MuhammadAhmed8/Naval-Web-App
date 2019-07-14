@@ -1,0 +1,50 @@
+﻿@model WebApplication6.Models.Order
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div style="margin: 95px 1rem">
+    <h4 class="display-4" >Order</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 " style="margin: 0 auto">
+            <form asp-action="Checkout" method="post">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <p class="text-secondary" style="font-family: 'Muli', sans-serif; padding: 1rem 2px;">
+                     Delivery Available in Karachi
+                    <i class="fa fa-exclamation"></i>
+                </p>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label text-secondary"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label text-secondary"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label text-secondary"></label>
+                    <input asp-for="Phone" class="form-control" pattern="^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AdditionalDetails" class="control-label text-secondary"></label>
+                    <textarea asp-for="AdditionalDetails" class="form-control"></textarea>
+                    <span asp-validation-for="AdditionalDetails" class="text-danger"></span>
+                </div><br />
+                      <div class="form-group text-center">
+                          <a class="btn btn-secondary"  href="/cart">Back</a>
+                          <input type="submit" value="Order" class="btn btn-dark" />
+                      </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+

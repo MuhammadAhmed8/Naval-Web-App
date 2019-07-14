@@ -1,0 +1,17 @@
+﻿@model WebApplication6.Models.ShoppingCart
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h1>@ViewBag.greeting SS</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    @foreach(var p in Model.Products)
+    {
+        <p>@p.Name  - @p.Price.ToString("c")</p>
+    }
+</div>

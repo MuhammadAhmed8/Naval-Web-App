@@ -1,0 +1,136 @@
+﻿@model IEnumerable<WebApplication6.Models.Order>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalDetails)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalDetails)
+            </td>
+            <td>
+                @foreach (var i in item.OrderLines)
+                {
+                    @Html.DisplayFor(modelItem => i.Product.Name)
+                    <br />
+                }
+            </td>
+            
+            <td>
+
+                <form method="post" asp-action="Cancel">
+                    @Html.AntiForgeryToken();
+
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal">Cancel</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Ordered Delivered!</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p>
+                                        Are you sure you want to cancel this order? <br />
+                                        Note: You won't be able to see it again.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="OrderId" value="@item.OrderID" />
+                                    <button type="submit" class="btn btn-default">YES</button>
+
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form method="post" asp-action="MarkDelivered">
+                    @Html.AntiForgeryToken();
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal2">Delivered</button>
+                    <div class="modal fade" id="myModal2" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Ordered Delivered!</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p>
+                                        Are you sure you want to mark this order as delivered? <br />
+                                        Note: You won't be able to unmark it again!
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="OrderId" value="@item.OrderID" />
+                                    <button type="submit" class="btn btn-default">YES</button>
+
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+<!--
+    Cancel Order Model Form
+-->
+
+
+<!--
+ deliver It Model Form    
+-->
+

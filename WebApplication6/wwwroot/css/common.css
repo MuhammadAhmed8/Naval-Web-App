@@ -1,0 +1,27 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f6f6f6;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+a:active{
+    color:yellow
+}
+a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    color: black;
+    margin: 0
+}

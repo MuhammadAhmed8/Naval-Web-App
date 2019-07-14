@@ -1,0 +1,72 @@
+﻿@model WebApplication6.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" type="text/css" href="~/admin/logincss/util.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/logincss/main.css">
+</head>
+<body>
+<div class="limiter">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-danger">@TempData["message"]</div>
+    }
+    <div class="container-login100">
+
+        <div class="wrap-login100">
+            <div>
+                <center>
+                    <img src="https://png.pngtree.com/svg/20170721/0083f9a69c.png" width="120px" height="120px" />
+                </center>
+                <span class="login100-form-title p-b-26">
+                    Welcome
+                </span>
+            </div><br />
+                  <form asp-action="Login" method="post">
+                      @Html.AntiForgeryToken();
+
+                      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                      <div>
+                          <label asp-for="Username" class="control-label"></label>
+                          <input asp-for="Username" class="wrap-input100" required />
+
+                      </div>
+                      <div>
+                          <label asp-for="Password" class="control-label"></label>
+                          <input asp-for="Password" class="wrap-input100" required />
+                      </div>
+                      <div>
+                          Remember Me:
+                          <input type="checkbox" asp-for="Rememberme" />
+                      </div>
+                      <br />
+                      <div class="container-login100-form-btn">
+                          <div class="wrap-login100-form-btn">
+                              <div class="login100-form-bgbtn"></div>
+                              <button class="login100-form-btn" type="submit">
+                                  Login
+                              </button>
+                          </div>
+                      </div>
+
+
+                  </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

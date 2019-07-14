@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Category>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@foreach (var c in Model)
+{
+    <h2 class="heading2 color"><span> Products </span></h2>
+
+    <ul align="center" class="pro-menu">
+        <li class="active"><a data-toggle="pill" href="#pro-chicken">Chicken</a></li>
+        <li><a data-toggle="pill" href="#pro-goat">Goat</a></li>
+        <li><a data-toggle="pill" href="#pro-fish">Fish</a></li>
+        <li><a data-toggle="pill" href="#pro-egg">Egg</a></li>
+    </ul>
+}
